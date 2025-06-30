@@ -12,13 +12,13 @@ Feature: Hover tooltips for accessibility
     And the tooltip element should have aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
-      | elementName        | cssSelector           | tooltipText                         |
-      | Add-To_cart Button | li.social_twitter > a | Add To Cart                         |
-      | Product Image      | li.social_twitter > a | More Details On Sauce Labs Backpack |
-      | Product Title      | li.social_twitter > a | More Details On Sauce Labs Backpack |
-      | Sort Dropdown      | li.social_twitter > a | Sort Products                       |
-      | Cart Icon          | li.social_twitter > a | Your Cart                           |
-      | Menu Icon          | li.social_twitter > a | Open Menu                           |
+      | elementName        | cssSelector                      | tooltipText                         |
+      | Add-To_cart Button | #add-to-cart-sauce-labs-backpack | Add To Cart                         |
+      | Product Image      | #item_4_img_link                 | More Details On Sauce Labs Backpack |
+      | Product Title      | #item_4_title_link               | More Details On Sauce Labs Backpack |
+      | Sort Dropdown      | select.product_sort_container    | Sort Products                       |
+      | Cart Icon          | a.shopping_cart_link             | Your Cart                           |
+      | Menu Icon          | #react-burger-menu-btn           | Open Menu                           |
 
 
   @RequiresItemInCart
@@ -30,8 +30,8 @@ Feature: Hover tooltips for accessibility
     And the tooltip element should have aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
-      | elementName   | cssSelector           | tooltipText      |
-      | Remove Button | li.social_twitter > a | Remove From Cart |
+      | elementName   | cssSelector | tooltipText      |
+      | Remove Button | #remove-sauce-labs-backpack           | Remove From Cart |
 
   @RequiresScroll
   Scenario Outline: Tooltip appears and is accessible when hovering over footer related element "<elementName>"
@@ -42,7 +42,7 @@ Feature: Hover tooltips for accessibility
     And the tooltip element should have aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
-      | elementName | cssSelector | tooltipText |
-      | LinkedIn Icon      | li.social_twitter > a | LinkedIn                            |
-      | Facebook Icon      | li.social_twitter > a | Facebook                            |
-      | Twitter Icon       | li.social_twitter > a | Twitter                             |
+      | elementName   | cssSelector            | tooltipText |
+      | LinkedIn Icon | li.social_linkedin > a  | LinkedIn    |
+      | Facebook Icon | li.social_facebook > a | Facebook    |
+      | Twitter Icon  | li.social_twitter > a  | Twitter     |

@@ -1,6 +1,6 @@
 package testdata
 
-object PlaceHolder {
+object Data {
 
 
 }

@@ -1,6 +1,9 @@
 package pages
 
 import org.openqa.selenium.{By, WebDriver, WebElement}
+import utils.ConfigReader
+
+
 
 trait BasePage {
   val driver: WebDriver = DriverManager.driver

@@ -13,8 +13,9 @@ class CartStepDefinitions extends ScalaDsl with EN {
     browserLaunch()
   }
 
-  When("""the user clicks the "Add to cart" button on a product""")
+  When("""the user clicks the "Add to cart" button on a product""") { ()
 
+  }
 
 
 }

@@ -12,13 +12,13 @@ class LoginSteps extends ScalaDsl with EN {
   }
 
   When("""the user enters valid username and password""") { () =>
-    driver.findElement(By.id("#user-name")).sendKeys("standard_user")
-    driver.findElement(By.id("#password")).sendKeys("secret_sauce")
+    driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user")
+      driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce")
 
   }
 
   And("""the user clicks the login button""") { () =>
-    driver.findElement(By.id("#login-button")).click()
+    driver.findElement(By.cssSelector("#login-button")).click()
   }
 
   Then("""the user should be logged in successfully""") { () =>
@@ -26,5 +26,7 @@ class LoginSteps extends ScalaDsl with EN {
     val expectedHeader = "Products"
 
     assert(actualHeader == expectedHeader, s"Expected header '$expectedHeader', but got '$actualHeader'")
+
+    driver.quit()
   }
 }

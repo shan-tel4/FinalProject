@@ -19,3 +19,5 @@ Feature: Login Functionality
 
 
 Scenario: Unsuccessful login with invalid username and valid password
+  Given the user user is on the Swag Lab page
+  When the user enters

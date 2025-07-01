@@ -7,7 +7,7 @@ import testdata.Data.{passwordText, usernameText}
 import utils.ConfigReader
 
 trait BasePage {
-  val driver: WebDriver = DriverManager.driver
+  def driver: WebDriver = DriverManager.driver
 
   def browserLaunch(): Unit = {
     val testUrl = ConfigReader.get("base.url")

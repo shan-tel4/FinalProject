@@ -9,26 +9,18 @@ import utils.WaitUtils
 
 object AccessibilityPage extends BasePage {
 
-  val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
+
   WaitUtils.setImplicitWait(driver, 5)
 
-  def loginUser(): Unit = {
 
-    driver.get("https://www.saucedemo.com/")
-    driver.manage().window().maximize()
-    driver.findElement(By.id("user-name")).sendKeys(usernameText)
-    driver.findElement(By.id("password")).sendKeys(passwordText)
-    driver.findElement(By.id("login-button")).click()
-    println("Logged in")
-
-  }
 
   def addProductToCart(): Unit = {
     clickOn(addToCartBackpack)
   }
 
   def scrollToBottom(): Unit = {
-    js.executeScript("arguments[0].scrollTo(0, document.body.scrollHeight)")
+    val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
+    js.executeScript("window.scrollTo(0, document.body.scrollHeight)")
   }
 
   def hoverOverElement(cssSelector: String): Unit = {
@@ -43,13 +35,17 @@ object AccessibilityPage extends BasePage {
     tooltip.getText
   }
 
-//  def tooltipHasRole(role: String): Boolean = {
-//    val tooltip = driver.findElement(genericTooltip)
-//
-//  }
-//
-//  def tooltipHasAccessibleLabel(): Boolean = {
-//
-//  }
+  def tooltipHasRole(role: String): Boolean = {
+    val tooltip = driver.findElement(genericTooltip)
+tooltip.getAttribute("role") == role
+  }
+
+  def tooltipHasAccessibleLabel(expectedText: String): Boolean = {
+    val tooltip = driver.findElement(genericTooltip)
+    val ariaLabel = Option(tooltip.getAttribute("aria-label"))
+    val ariaDescribedBy = Option(tooltip.getAttribute("aria-describedby"))
+    ariaLabel.contains(expectedText) || ariaDescribedBy.contains(expectedText)
+  }
+
 
 }

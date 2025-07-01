@@ -7,7 +7,7 @@ import org.junit.runner.RunWith                               // Import JUnit’
 @CucumberOptions(                                            // Begin Cucumber configuration block
   features   = Array("src/test/resources/features"),         // Path(s) to your .feature files (Gherkin scenarios)
   glue       = Array("stepdefs", "support"),                 // Packages that contain step definitions, hooks, and other glue code
-  tags       = "@smoke or @regression or @login or @Form",
+  tags       = "@smoke or @regression or @login or @Form or @Tooltip",
   plugin     = Array("pretty",                                                //  • “pretty” prints colour‑coded steps to the console
     "html:target/cucumber-report.html"                       //  • Generates an HTML report at target/cucumber-report.html
   ),

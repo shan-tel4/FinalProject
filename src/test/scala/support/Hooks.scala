@@ -12,13 +12,22 @@ object Hooks extends ScalaDsl with EN {
 0
   Before {
     println("Launching browser before scenario...")
-    DriverManager.driver = new ChromeDriver(options)
+    DriverManager.setDriver(new ChromeDriver(options))
     DriverManager.driver.manage().window().maximize()
   }
 
   After { scenario: Scenario =>
     ScreenCapture.captureFailure(scenario,DriverManager.driver)
     println("Closing browser after scenario...")
-    DriverManager.driver.quit()
+    try{
+      if(DriverManager.driver != null){
+        DriverManager.driver.quit()
+        DriverManager.setDriver(null)
+        println("Browser Closed")
+      }
+    } catch {
+      case e: Exception => println(s"Error during driver quit: ${e.getMessage}" )
+    }
+
   }
 }

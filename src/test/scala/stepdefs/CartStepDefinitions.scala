@@ -68,6 +68,6 @@ class CartStepDefinitions extends ScalaDsl with EN {
     println("Product removed")
   }
 
-  driver.quit()
+
 
 }

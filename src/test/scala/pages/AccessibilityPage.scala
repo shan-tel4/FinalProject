@@ -35,6 +35,7 @@ object AccessibilityPage extends BasePage {
     tooltip.getText
   }
 
+
   def tooltipHasRole(role: String): Boolean = {
     val tooltip = driver.findElement(genericTooltip)
 tooltip.getAttribute("role") == role
@@ -46,6 +47,7 @@ tooltip.getAttribute("role") == role
     val ariaDescribedBy = Option(tooltip.getAttribute("aria-describedby"))
     ariaLabel.contains(expectedText) || ariaDescribedBy.contains(expectedText)
   }
+
 
 
 }

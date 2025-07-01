@@ -31,7 +31,7 @@ class LoginSteps extends ScalaDsl with EN {
 
     assert(actualHeader == expectedHeader, s"Expected header '$expectedHeader', but got '$actualHeader'")
 
-    driver.quit()
+
   }
 
 
@@ -56,6 +56,8 @@ class LoginSteps extends ScalaDsl with EN {
   }
 
   // FAILED LOGIN WITH INVALID USERNAME AND VALID PASSWORD
+
+
 
 
 }

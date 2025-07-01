@@ -18,6 +18,11 @@ Feature: Login Functionality
 
 
 
-Scenario: Unsuccessful login with invalid username and valid password
-  Given the user user is on the Swag Lab page
-  When the user enters
+  Scenario: Unsuccessful login with invalid username and valid password
+    Given the user is on the Swag Lab page
+    When the user enters an invalid username and valid password
+    And the user clicks the login button
+    Then an error message is displayed on the login page
+    And the user is not logged in
+
+

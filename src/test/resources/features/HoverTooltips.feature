@@ -30,19 +30,19 @@ Feature: Hover tooltips for accessibility
     And the tooltip element has aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
-      | elementName   | cssSelector | tooltipText      |
-      | Remove Button | #remove-sauce-labs-backpack           | Remove From Cart |
+      | elementName   | cssSelector                 | tooltipText      |
+      | Remove Button | #remove-sauce-labs-backpack | Remove From Cart |
 
   @RequiresScroll
   Scenario Outline: Tooltip appears and is accessible when hovering over footer related element "<elementName>"
     Given  The user scrolls to the bottom of the page
     When The user hovers over the element using selector "<cssSelector>"
     Then The user sees a tooltip with the text "<tooltipText>"
-    And the tooltip element has have role="tooltip"
-    And the tooltip element has have aira-label or aria-describedby matching "<tooltipText>"
+    And the tooltip element has role="tooltip"
+    And the tooltip element has aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
       | elementName   | cssSelector            | tooltipText |
-      | LinkedIn Icon | li.social_linkedin > a  | LinkedIn    |
+      | LinkedIn Icon | li.social_linkedin > a | LinkedIn    |
       | Facebook Icon | li.social_facebook > a | Facebook    |
       | Twitter Icon  | li.social_twitter > a  | Twitter     |

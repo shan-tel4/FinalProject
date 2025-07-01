@@ -17,9 +17,17 @@ Feature: Cart functionality
     And the user clicks the "Remove" button on the product while on the Inventory Page
     Then the product is removed from the cart on the Inventory Page
 
+    # Need to fix
   Scenario: User navigates back to Inventory from the Your Cart page
     When the user clicks on the cart icon
     And the user is on the "Your Cart" page
     And the user clicks the "Continue Shopping" button
-    Then the user is redirected to the Inventory page
+    Then the user is redirected to the inventory page
+
+#  Failed test
+  Scenario: Standard user attempts to check out with an empty cart
+    When the user clicks cart icon without adding any products
+    And the user is on the "Your Cart" page
+    And the user clicks “Checkout” button
+    Then an error message is displayed on the screen
 

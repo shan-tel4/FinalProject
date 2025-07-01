@@ -9,7 +9,7 @@ Feature: Cart functionality
     And the product is added to the cart
     And the user clicks on the cart icon
     And the user clicks the "Remove" button on a product
-    Then the product should be removed from the cart
+    Then the product is removed from the cart
 
   Scenario: User removes item from cart on the Inventory page
     When the user clicks the "Add to cart" button on a product

@@ -8,7 +8,7 @@ class LoginSteps extends ScalaDsl with EN {
   val driver: WebDriver = new ChromeDriver()
 
 
-  //Validate Successful login with valid username and password
+  //SUCCESSFUL LOGIN
   Given("""the user is on the Swag Lab page""") { () =>
     driver.get("https://www.saucedemo.com/")
     driver.manage().window().maximize()
@@ -35,28 +35,24 @@ class LoginSteps extends ScalaDsl with EN {
   }
 
 
-  //Failed Login With Invalid Username and Valid password for Standard User
-  Given("""the user is on the Swag Lab page""") { () =>
-    driver.get("https://www.saucedemo.com/")
-    driver.manage().window().maximize()
-
-  }
+  // FAILED LOGIN
 
   When("""the user enters an invalid username and password""") { () =>
+    driver.findElement(By.cssSelector("#user-name")).clear()
+    driver.findElement(By.cssSelector("#password")).clear()
     driver.findElement(By.cssSelector("#user-name")).sendKeys("Sarah")
     driver.findElement(By.cssSelector("#password")).sendKeys("Password1234")
-
   }
 
-  And("""the user clicks the login button""") { () =>
-    driver.findElement(By.cssSelector("#login-button")).click()
+  Then("""an error message should be displayed on the login page""") { () =>
+    val errorElement = driver.findElement(By.cssSelector("h3[data-test='error']"))
+    assert(errorElement.isDisplayed, "Expected an error message to be displayed, but it was not.")
   }
 
-  Then("""an error message should be displayed""") { () =>
-
-    And("""the user should remain on the login page""") { () =>
-
-      driver.quit()
-    }
+  And("""the user should not be logged in""") { () =>
+    val currentUrl = driver.getCurrentUrl
+    assert(currentUrl.contains("saucedemo.com"), "Expected user to stay on the login page.")
+    driver.quit()
   }
+
 }

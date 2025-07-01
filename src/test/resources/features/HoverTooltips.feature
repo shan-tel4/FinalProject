@@ -7,9 +7,9 @@ Feature: Hover tooltips for accessibility
 
   Scenario Outline: Tooltip appears and is accessible when hovering over "<elementName>"
     When The user hovers over the element using selector "<cssSelector>"
-    Then The user should see a tooltip with the text "<tooltipText>"
-    And the tooltip element should have role="tooltip"
-    And the tooltip element should have aira-label or aria-describedby matching "<tooltipText>"
+    Then The user sees a tooltip with the text "<tooltipText>"
+    And the tooltip element has role="tooltip"
+    And the tooltip element has aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
       | elementName        | cssSelector                      | tooltipText                         |
@@ -25,9 +25,9 @@ Feature: Hover tooltips for accessibility
   Scenario Outline: Tooltip appears and is accessible when hovering over cart related element "<elementName>"
     Given  The user has added a product to the cart
     When The user hovers over the element using selector "<cssSelector>"
-    Then The user should see a tooltip with the text "<tooltipText>"
-    And the tooltip element should have role="tooltip"
-    And the tooltip element should have aira-label or aria-describedby matching "<tooltipText>"
+    Then The user sees a tooltip with the text "<tooltipText>"
+    And the tooltip element has role="tooltip"
+    And the tooltip element has aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
       | elementName   | cssSelector | tooltipText      |
@@ -37,9 +37,9 @@ Feature: Hover tooltips for accessibility
   Scenario Outline: Tooltip appears and is accessible when hovering over footer related element "<elementName>"
     Given  The user scrolls to the bottom of the page
     When The user hovers over the element using selector "<cssSelector>"
-    Then The user should see a tooltip with the text "<tooltipText>"
-    And the tooltip element should have role="tooltip"
-    And the tooltip element should have aira-label or aria-describedby matching "<tooltipText>"
+    Then The user sees a tooltip with the text "<tooltipText>"
+    And the tooltip element has have role="tooltip"
+    And the tooltip element has have aira-label or aria-describedby matching "<tooltipText>"
 
     Examples:
       | elementName   | cssSelector            | tooltipText |

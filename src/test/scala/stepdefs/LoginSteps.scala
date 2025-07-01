@@ -3,9 +3,10 @@ package stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.{By, WebDriver}
 import org.openqa.selenium.chrome.ChromeDriver
+import pages.CartPage.driver
 
 class LoginSteps extends ScalaDsl with EN {
-  val driver: WebDriver = new ChromeDriver()
+
 
   Given("""the user is on the Swag Lab page""") { () =>
     driver.get("https://www.saucedemo.com/")
@@ -31,7 +32,7 @@ class LoginSteps extends ScalaDsl with EN {
     val actualHeader = driver.findElement(By.className("title")).getText
     val expectedHeader = "Products"
     assert(actualHeader == expectedHeader, s"Expected header '$expectedHeader', but got '$actualHeader'")
-    driver.quit()
+
   }
 
   Then("""an error message is displayed on the login page""") { () =>

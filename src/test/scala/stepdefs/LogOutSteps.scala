@@ -4,10 +4,12 @@ import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.{By, WebDriver}
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import pages.CartPage.driver
+
 import java.time.Duration
 
 class LogOutSteps extends ScalaDsl with EN {
-  val driver: WebDriver = new ChromeDriver()
+
 
   Given("""the user is logged into the Swag Lab page""") { () =>
     driver.get("https://www.saucedemo.com/")

@@ -1,28 +1,26 @@
 
-
 Feature: Login Functionality
 
-  Scenario: Successful login with valid credentials
+  Scenario Outline: Login attempts with different credential combinations
     Given the user is on the Swag Lab page
-    When the user enters valid username and password
+    When the user enters username "<username>" and password "<password>"
     And the user clicks the login button
-    Then the user is logged in successfully
+    Then <loginOutcome>
+
+    Examples:
+      | username                 | password       | loginOutcome                               |
+      | standard_user           | secret_sauce   | the user is logged in successfully         |
+      | invalid_user            | wrong_password | an error message is displayed on the login page |
+      | invalid_user            | secret_sauce   | an error message is displayed on the login page |
+      | error_user              | secret_sauce   | an error message is displayed on the login page |
+      | performance_glitch_user | secret_sauce   | an error message is displayed on the login page |
+      | standard_user           | wrong_password | an error message is displayed on the login page |
+      | problem_user            | secret_sauce   | an error message is displayed on the login page |
+      | locked_out_user         | secret_sauce   | an error message is displayed on the login page |
 
 
-  Scenario: Unsuccessful login with invalid username and password
-    Given the user is on the Swag Lab page
-    When the user enters an invalid username and password
-    And the user clicks the login button
-    Then an error message is displayed on the login page
-    And the user is not logged in
 
 
 
-  Scenario: Unsuccessful login with invalid username and valid password
-    Given the user is on the Swag Lab page
-    When the user enters an invalid username and valid password
-    And the user clicks the login button
-    Then an error message is displayed on the login page
-    And the user is not logged in
 
 

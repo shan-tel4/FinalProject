@@ -43,13 +43,13 @@ object AccessibilityPage extends BasePage {
     tooltip.getText
   }
 
-  def tooltipHasRole(role: String): Boolean = {
-    val tooltip = driver.findElement(genericTooltip)
-
-  }
-
-  def tooltipHasAccessibleLabel(): Boolean = {
-
-  }
+//  def tooltipHasRole(role: String): Boolean = {
+//    val tooltip = driver.findElement(genericTooltip)
+//
+//  }
+//
+//  def tooltipHasAccessibleLabel(): Boolean = {
+//
+//  }
 
 }

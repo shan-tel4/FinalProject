@@ -9,4 +9,5 @@ object Data {
   val firstName = "John"
   val lastName = "Smith"
   val postCode = "SW6 12X"
+  val invalidPostCode = ""
 }

@@ -1,14 +1,14 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import pages.CartPage.{addButtonPresent, addToCart, cartIconNumber, cartQuantity, checkProductIsRemovedFromCartPage, clickCartIcon, clickCheckout, clickContinueShopping, clickRemove, errorMessage, explicitWaitTenSeconds, loginUser, onCartPage, onInventoryPage, priceTotal, productAdded, returnToInventoryPage}
+import pages.CartPage.{addAllProducts, addButtonPresent, addToCart, cartIconNumber, cartQuantity, checkProductIsRemovedFromCartPage, checkSixRemoveButtonsPresent, clickCartIcon, clickCheckout, clickContinueShopping, clickRemove, errorMessage, explicitWaitTenSeconds, loginUser, onCartPage, onInventoryPage, priceTotal, productAdded, returnToInventoryPage}
 
 class CartStepDefinitions extends ScalaDsl with EN {
 
   //  val driver: WebDriver = new ChromeDriver()
 
   // Background
-  
+
   Given("""the user has successfully logged in""") { () =>
     loginUser()
   }
@@ -71,7 +71,7 @@ class CartStepDefinitions extends ScalaDsl with EN {
   //  Scenario: Standard user attempts to check out with an empty cart -- This should fail
 
   When("""the user clicks cart icon without adding any products""") { () =>
-    cartQuantity() == 0
+    assert(cartQuantity() == 0, s"Expected 0 items in cart, but got ${cartQuantity()}")
     clickCartIcon()
   }
 
@@ -86,21 +86,21 @@ class CartStepDefinitions extends ScalaDsl with EN {
   // Scenario: User views cart page with no products added
 
   Then("""no products are listed""") { () =>
-    cartQuantity() == 0
+    assert(cartQuantity() == 0, s"Expected 0 items in cart, but got ${cartQuantity()}")
     println("Number of items: " + cartQuantity())
   }
 
   // Scenario: Standard user adds item to cart
 
   Then("""the cart icon increases to 1""") { () =>
-    cartIconNumber() == 1
+    assert(cartIconNumber() == 1, s"Expected 1 item in cart, but got ${cartIconNumber()}")
     println("Cart icon displays number: " + cartIconNumber())
   }
 
   // Scenario: User views products in cart --> Should fail
 
   And("""a list of products is displayed""") { () =>
-    cartQuantity() == 1
+    assert(cartQuantity() >= 1, s"Expected quantity is 1 or more, but got ${cartIconNumber()}")
     println("Number of items: " + cartQuantity())
   }
 
@@ -108,5 +108,18 @@ class CartStepDefinitions extends ScalaDsl with EN {
     priceTotal()
   }
 
+  //  Scenario: Verify Standard User can add multiple items to cart up to the maximum limit
+
+  When("""the user clicks add to cart for all 6 items""") { () =>
+    addAllProducts()
+  }
+
+  And("""the cart icon updates to show current number of items stored""") { () =>
+    assert(cartIconNumber() == 6, s"Expected 6 items in cart, but got ${cartIconNumber()}")
+  }
+
+  Then("""all "Add to Cart" buttons change to "Remove" buttons""") { () =>
+    checkSixRemoveButtonsPresent()
+  }
 
 }

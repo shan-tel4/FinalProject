@@ -2,8 +2,8 @@ package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.JavascriptExecutor
-import pages.CartPage.{loginUser, onInventoryPage, priceTotal}
-import pages.CheckoutPage.{addAdditionalProduct, clickBackHomeButton, clickContinueButton, clickFinishButton, inputValidCredentials, onCheckoutOverviewPage, onOrderConfirmationPage, onYourInformationPage, paymentInfoPresent, priceTotalPresent, shippingInfoPresent}
+import pages.CartPage.{errorMessage, loginUser, onInventoryPage, priceTotal}
+import pages.CheckoutPage.{addAdditionalProduct, clickBackHomeButton, clickContinueButton, clickFinishButton, errorIconPresent, errorIconsCount, informationFormPresent, inputInvalidPostCode, inputValidFirstName, inputValidLastName, inputValidPostCode, onCheckoutOverviewPage, onOrderConfirmationPage, onYourInformationPage, paymentInfoPresent, priceTotalPresent, shippingInfoPresent}
 import support.DriverManager.driver
 
 class CheckoutStepdefs extends ScalaDsl with EN {
@@ -22,7 +22,9 @@ class CheckoutStepdefs extends ScalaDsl with EN {
   }
 
   And("""the user inputs valid credentials""") { () =>
-    inputValidCredentials()
+    inputValidFirstName()
+    inputValidLastName()
+    inputValidPostCode()
   }
 
   And("""the user clicks the "Continue" button""") { () =>
@@ -53,5 +55,31 @@ class CheckoutStepdefs extends ScalaDsl with EN {
     shippingInfoPresent()
     priceTotalPresent()
   }
+
+  //  Scenario: Validate Empty Postcode Field Handling For Logged-in User ---> Should fail but is passing
+
+  And("""the user inputs valid first name and last name""") { () =>
+    inputValidFirstName()
+    inputValidLastName()
+  }
+
+  And("""the user inputs invalid post code""") { () =>
+    inputInvalidPostCode()
+  }
+
+  Then("""the error message and red x icon is displayed for invalid field""") { () =>
+    errorMessage()
+    errorIconPresent()
+    errorIconsCount() == 1
+    println(errorIconsCount())
+  }
+
+  // Scenario: Successful checkout initiation for Standard User
+
+  Then("""the information form is visible""") { () =>
+    informationFormPresent()
+  }
+
+
 
 }

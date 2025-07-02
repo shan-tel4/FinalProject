@@ -1,0 +1,5 @@
+package locators
+
+object ProductLocators {
+
+}

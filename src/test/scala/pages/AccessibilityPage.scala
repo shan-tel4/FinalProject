@@ -9,11 +9,6 @@ import utils.WaitUtils
 
 object AccessibilityPage extends BasePage {
 
-
-  WaitUtils.setImplicitWait(driver, 5)
-
-
-
   def addProductToCart(): Unit = {
     clickOn(addToCartBackpack)
   }
@@ -38,7 +33,7 @@ object AccessibilityPage extends BasePage {
 
   def tooltipHasRole(role: String): Boolean = {
     val tooltip = driver.findElement(genericTooltip)
-tooltip.getAttribute("role") == role
+    tooltip.getAttribute("role") == role
   }
 
   def tooltipHasAccessibleLabel(expectedText: String): Boolean = {
@@ -47,7 +42,6 @@ tooltip.getAttribute("role") == role
     val ariaDescribedBy = Option(tooltip.getAttribute("aria-describedby"))
     ariaLabel.contains(expectedText) || ariaDescribedBy.contains(expectedText)
   }
-
 
 
 }

@@ -2,7 +2,7 @@ package pages
 
 import org.openqa.selenium.{By, JavascriptExecutor, WebElement}
 import pages.CartPage.{cartIconNumber, cartQuantity, driver}
-import testdata.Data.{firstName, lastName, postCode}
+import testdata.Data.{firstName, invalidPostCode, lastName, postCode}
 
 
 object CheckoutPage extends BasePage {
@@ -11,6 +11,7 @@ object CheckoutPage extends BasePage {
 
   def addAdditionalProduct(): Unit = {
     driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click()
+
     println("Additional product added, number of items: " + cartIconNumber())
   }
 
@@ -32,12 +33,26 @@ object CheckoutPage extends BasePage {
     println("On Checkout: Complete! page")
   }
 
-  def inputValidCredentials(): Unit = {
-    driver.findElement(By.id("first-name")).sendKeys(firstName)
-    driver.findElement(By.id("last-name")).sendKeys(lastName)
-    driver.findElement(By.id("postal-code")).sendKeys(postCode)
+  def inputValidFirstName(): Unit = {
+    inputText(By.id("first-name"), firstName)
 
-    println("Valid credentials input")
+    println("Valid first name input")
+  }
+
+  def inputValidLastName(): Unit = {
+    inputText(By.id("last-name"), lastName)
+
+    println("Valid last name input")
+  }
+
+  def inputValidPostCode(): Unit = {
+    inputText(By.id("postal-code"), postCode)
+
+    println("Valid post code input")
+  }
+
+  def inputInvalidPostCode(): Unit = {
+    inputText(By.id("postal-code"), invalidPostCode)
   }
 
   def clickContinueButton(): Unit = {
@@ -83,6 +98,18 @@ object CheckoutPage extends BasePage {
     driver.findElement(By.cssSelector("[data-test='total-label']")).isDisplayed
   }
 
+  def errorIconPresent(): Unit = {
+    driver.findElement(By.cssSelector("[data-icon='times-circle']")).isDisplayed
+  }
+
+  def errorIconsCount(): Int = {
+    driver.findElements(By.cssSelector("[data-icon='times-circle']")).size()
+  }
+
+  def informationFormPresent(): Unit = {
+    driver.findElement(By.className("checkout_info")).isDisplayed
+    println("Form is visible")
+  }
 
 
 }

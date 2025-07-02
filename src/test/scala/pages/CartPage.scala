@@ -7,6 +7,7 @@ import testdata.Data.{passwordText, usernameText}
 
 import java.time.Duration
 import javax.management.modelmbean.RequiredModelMBean
+import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
 
 object CartPage extends BasePage {
 
@@ -46,11 +47,12 @@ object CartPage extends BasePage {
   }
 
   def cartQuantity(): Int = {
-    driver.findElements(By.className("cart_quantity")).size()
+    driver.findElements(By.className("cart_item")).size()
   }
 
   def cartIconNumber(): Any = {
-    driver.findElements(By.className("shopping_cart_badge")).size()
+    val badge = driver.findElement(By.className("shopping_cart_badge"))
+    badge.getText.toInt
   }
 
   def productAdded(): Unit = {
@@ -114,11 +116,32 @@ object CartPage extends BasePage {
   }
 
   def errorMessage(): Unit = {
-    val error = driver.findElement(By.cssSelector("error"))
+    val error = driver.findElement(By.cssSelector("[data-test='error']"))
     assert(error.isDisplayed, "Expected error message to be visible but it was not.")
     println("Error message is displayed: " + error.getText)
   }
 
+  def addAllProducts(): Unit = {
+    driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click()
+    driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click()
+    driver.findElement(By.id("add-to-cart-sauce-labs-onesie")).click()
+    driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click()
+    driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).click()
+    driver.findElement(By.id("add-to-cart-test.allthethings()-t-shirt-(red)")).click()
+
+    println("All products added")
+  }
+
+  def checkSixRemoveButtonsPresent(): Unit = {
+    driver.findElement(By.id("remove-sauce-labs-backpack")).isDisplayed
+    driver.findElement(By.id("remove-sauce-labs-bolt-t-shirt")).isDisplayed
+    driver.findElement(By.id("remove-sauce-labs-onesie")).isDisplayed
+    driver.findElement(By.id("remove-sauce-labs-bike-light")).isDisplayed
+    driver.findElement(By.id("remove-sauce-labs-fleece-jacket")).isDisplayed
+    driver.findElement(By.id("remove-test.allthethings()-t-shirt-(red)")).isDisplayed
+
+    println("All remove buttons present")
+  }
 
 }
 

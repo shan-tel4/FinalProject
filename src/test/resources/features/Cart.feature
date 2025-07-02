@@ -48,3 +48,8 @@ Feature: Cart functionality
     And the user is on the "Your Cart" page
     And a list of products is displayed
     Then the total price is displayed
+
+  Scenario: Verify Standard User can add multiple items to cart up to the maximum limit
+    When the user clicks add to cart for all 6 items
+    And the cart icon updates to show current number of items stored
+    Then all "Add to Cart" buttons change to "Remove" buttons

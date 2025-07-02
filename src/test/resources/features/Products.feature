@@ -1,9 +1,12 @@
 Feature: Product Sorting
 
+  Background:
+    Given The user is successfully logged in
+    And The user is on the inventory page
+
   Scenario Outline: User selects a sorting option from the dropdown
-    Given the user is on the products page
-    When the user clicks on the sorting dropdown button
-    And the user selects "<option>" from the dropdown
+
+    When the user selects "<option>" from the sort dropdown
     Then the products should be sorted by "<option>"
 
     Examples:

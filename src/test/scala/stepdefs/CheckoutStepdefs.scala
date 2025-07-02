@@ -2,8 +2,8 @@ package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.JavascriptExecutor
-import pages.CartPage.{loginUser, onInventoryPage}
-import pages.CheckoutPage.{addAdditionalProduct, clickBackHomeButton, clickContinueButton, clickFinishButton, inputValidCredentials, onCheckoutOverviewPage, onOrderConfirmationPage, onYourInformationPage}
+import pages.CartPage.{loginUser, onInventoryPage, priceTotal}
+import pages.CheckoutPage.{addAdditionalProduct, clickBackHomeButton, clickContinueButton, clickFinishButton, inputValidCredentials, onCheckoutOverviewPage, onOrderConfirmationPage, onYourInformationPage, paymentInfoPresent, priceTotalPresent, shippingInfoPresent}
 import support.DriverManager.driver
 
 class CheckoutStepdefs extends ScalaDsl with EN {
@@ -47,8 +47,11 @@ class CheckoutStepdefs extends ScalaDsl with EN {
 
 
   //  Scenario: Validate checkout summary details for standard user
-  Then("""a summary of information is displayed""")  { () =>
 
+  Then("""a summary of information is displayed""") { () =>
+    paymentInfoPresent()
+    shippingInfoPresent()
+    priceTotalPresent()
   }
 
 }

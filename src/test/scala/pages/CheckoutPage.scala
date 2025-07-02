@@ -61,5 +61,29 @@ object CheckoutPage extends BasePage {
   def clickBackHomeButton(): Unit = {
     driver.findElement(By.id("back-to-products")).click()
   }
+
+  def checkoutProductListPresent(): Boolean = {
+    driver.findElement(By.className("cart_list")).isDisplayed
+  }
+
+  def paymentInfoPresent(): Boolean = {
+    driver.findElement(By.cssSelector("[data-test='payment-info-label']")).isDisplayed
+    driver.findElement(By.cssSelector("[data-test='payment-info-value']")).isDisplayed
+  }
+
+  def shippingInfoPresent(): Boolean = {
+    driver.findElement(By.cssSelector("[data-test='shipping-info-label']")).isDisplayed
+    driver.findElement(By.cssSelector("[data-test='shipping-info-value']")).isDisplayed
+  }
+
+  def priceTotalPresent(): Boolean = {
+    driver.findElement(By.cssSelector("[data-test='total-info-label']")).isDisplayed
+    driver.findElement(By.cssSelector("[data-test='subtotal-label']")).isDisplayed
+    driver.findElement(By.cssSelector("[data-test='tax-label']")).isDisplayed
+    driver.findElement(By.cssSelector("[data-test='total-label']")).isDisplayed
+  }
+
+
+
 }
 

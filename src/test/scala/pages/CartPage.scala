@@ -22,13 +22,9 @@ object CartPage extends BasePage {
   }
 
   def onInventoryPage(): Unit = {
-//    val inventoryContainer = driver.findElement(By.id("inventory_container"))
-//    assert(inventoryContainer.isDisplayed, "Inventory page is not displayed")
-//    println("On inventory page: " + inventoryContainer.isDisplayed)
-
-        val productsTitle = driver.findElement(By.cssSelector("span[data-test='title']"))
-        assert(productsTitle.getText == "Products", "Expected page title to be 'Products'")
-        println("On Inventory page")
+    val productsTitle = driver.findElement(By.cssSelector("span[data-test='title']"))
+    assert(productsTitle.getText == "Products", "Expected page title to be 'Products'")
+    println("On Inventory page")
   }
 
   def returnToInventoryPage(): Unit = {
@@ -70,7 +66,6 @@ object CartPage extends BasePage {
   def priceTotal(): WebElement = {
     driver.findElement(By.className("summary_total_label"))
   }
-
 
 
   def addButtonPresent(): Unit = {

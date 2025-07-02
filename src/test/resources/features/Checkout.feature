@@ -17,7 +17,7 @@ Feature: Checkout functionality
     And the user clicks the "Continue" button
     And the user is on the "Checkout Overview" page
     And the user clicks the "Finish" button
-    And the user is on the "Order Confimation" page
+    And the user is on the "Order Confirmation" page
     And the user clicks back home
     Then the user is redirected to the inventory page
 

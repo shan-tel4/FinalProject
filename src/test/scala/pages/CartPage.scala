@@ -41,8 +41,7 @@ object CartPage extends BasePage {
     val productsTitle = driver.findElement(By.cssSelector("span[data-test='title']"))
     assert(productsTitle.getText == "Your Cart", "Expected page title to be 'Your Cart'")
     println("On Your Cart page")
-//    val cartContainer = driver.findElement(By.id("cart_contents_container"))
-//    assert(cartContainer.isDisplayed, "Your Cart page is not displayed")
+
   }
 
   def addToCart(): Unit = {

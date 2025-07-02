@@ -1,18 +1,14 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.{By, WebDriver}
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import pages.CartPage.{addButtonPresent, addToCart, cartIconNumber, cartQuantity, checkProductIsRemovedFromCartPage, clickCartIcon, clickCheckout, clickContinueShopping, clickRemove, errorMessage, explicitWaitTenSeconds, loginUser, onCartPage, onInventoryPage, priceTotal, productAdded, returnToInventoryPage}
-
-import java.time.Duration
 
 class CartStepDefinitions extends ScalaDsl with EN {
 
   //  val driver: WebDriver = new ChromeDriver()
 
-
+  // Background
+  
   Given("""the user has successfully logged in""") { () =>
     loginUser()
   }
@@ -69,8 +65,6 @@ class CartStepDefinitions extends ScalaDsl with EN {
   // NEEDS TO BE FIXED
   Then("""the user is redirected to the inventory page""") { () =>
     onInventoryPage()
-    //    val explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10))
-    //    val visible = explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("inventory_container")))
   }
 
 
@@ -113,7 +107,6 @@ class CartStepDefinitions extends ScalaDsl with EN {
   Then("""the total price is displayed""") { () =>
     priceTotal()
   }
-
 
 
 }

@@ -1,5 +1,5 @@
 @Accessibility @Tooltip @WIP
-Feature: Hover tooltips for accessibility
+Feature: Hover Tooltips for Accessibility
 
   Background:
     Given The user is successfully logged in

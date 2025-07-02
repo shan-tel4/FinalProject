@@ -31,3 +31,6 @@ Feature: Cart functionality
     And the user clicks “Checkout” button
     Then an error message is displayed on the screen
 
+    Scenario: User views cart page with no products added
+
+

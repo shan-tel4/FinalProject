@@ -32,7 +32,7 @@ object CartPage extends BasePage {
   }
 
   def returnToInventoryPage(): Unit = {
-    val inventoryList = driver.findElement(By.cssSelector("inventory-list"))
+    val inventoryList = driver.findElement(By.className("inventory-list"))
     assert(inventoryList.isDisplayed, "Inventory page is not displayed")
     println("On inventory page: " + inventoryList.isDisplayed)
   }
@@ -104,7 +104,7 @@ object CartPage extends BasePage {
     val explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10))
   }
 
-  def errorMessage() = {
+  def errorMessage(): Unit = {
     val error = driver.findElement(By.cssSelector("error"))
     assert(error.isDisplayed, "Expected error message to be visible but it was not.")
     println("Error message is displayed: " + error.getText)

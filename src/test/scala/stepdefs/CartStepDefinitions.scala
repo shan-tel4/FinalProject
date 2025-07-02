@@ -69,13 +69,13 @@ class CartStepDefinitions extends ScalaDsl with EN {
 
     // NEEDS TO BE FIXED
     Then("""the user is redirected to the inventory page""") { () =>
-      returnToInventoryPage()
+      onInventoryPage()
       //    val explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10))
       //    val visible = explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("inventory_container")))
     }
 
 
-  //  Scenario: Standard user attempts to check out with an empty cart
+  //  Scenario: Standard user attempts to check out with an empty cart -- This should fail
 
   When("""the user clicks cart icon without adding any products""") { () =>
     clickCartIcon()

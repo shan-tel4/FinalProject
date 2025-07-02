@@ -22,24 +22,22 @@ object CartPage extends BasePage {
   }
 
   def onInventoryPage(): Unit = {
-    val inventoryContainer = driver.findElement(By.id("inventory_container"))
-    assert(inventoryContainer.isDisplayed, "Inventory page is not displayed")
-    println("On inventory page: " + inventoryContainer.isDisplayed)
-
-    //    val productsTitle = driver.findElement(By.cssSelector("span[data-test='title']"))
-    //    assert(productsTitle.getText == "Products", "Expected page title to be 'Products'")
-    //    println("On inventory page")
+    val productsTitle = driver.findElement(By.cssSelector("span[data-test='title']"))
+    assert(productsTitle.getText == "Products", "Expected page title to be 'Products'")
+    println("On Inventory page")
   }
 
   def returnToInventoryPage(): Unit = {
-    val inventoryList = driver.findElement(By.cssSelector("inventory-list"))
+    val inventoryList = driver.findElement(By.className("inventory-list"))
     assert(inventoryList.isDisplayed, "Inventory page is not displayed")
-    println("On inventory page: " + inventoryList.isDisplayed)
+    println("On Inventory page: " + inventoryList.isDisplayed)
   }
 
   def onCartPage(): Unit = {
-    val cartContainer = driver.findElement(By.id("cart_contents_container"))
-    assert(cartContainer.isDisplayed, "Your Cart page is not displayed")
+    val productsTitle = driver.findElement(By.cssSelector("span[data-test='title']"))
+    assert(productsTitle.getText == "Your Cart", "Expected page title to be 'Your Cart'")
+    println("On Your Cart page")
+
   }
 
   def addToCart(): Unit = {
@@ -47,6 +45,13 @@ object CartPage extends BasePage {
     println("Clicked add to cart")
   }
 
+  def cartQuantity(): Int = {
+    driver.findElements(By.className("cart_quantity")).size()
+  }
+
+  def cartIconNumber(): Any = {
+    driver.findElements(By.className("shopping_cart_badge")).size()
+  }
 
   def productAdded(): Unit = {
     // Check shopping cart badge updates
@@ -56,8 +61,12 @@ object CartPage extends BasePage {
     removeButtonPresent()
 
     println(shoppingCartBadge.getText)
-
   }
+
+  def priceTotal(): WebElement = {
+    driver.findElement(By.className("summary_total_label"))
+  }
+
 
   def addButtonPresent(): Unit = {
     val addToCartButton = driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt"))
@@ -84,7 +93,7 @@ object CartPage extends BasePage {
   }
 
   def clickContinueShopping(): Unit = {
-    driver.findElement(By.id("continue-shopping"))
+    driver.findElement(By.id("continue-shopping")).click()
     println("Clicked continue shopping")
   }
 
@@ -104,7 +113,7 @@ object CartPage extends BasePage {
     val explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10))
   }
 
-  def errorMessage() = {
+  def errorMessage(): Unit = {
     val error = driver.findElement(By.cssSelector("error"))
     assert(error.isDisplayed, "Expected error message to be visible but it was not.")
     println("Error message is displayed: " + error.getText)

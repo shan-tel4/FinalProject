@@ -1,3 +1,5 @@
+@login
+
 
 Feature: Login Functionality
 

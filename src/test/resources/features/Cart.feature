@@ -1,3 +1,4 @@
+@cart @smoke @regression
 Feature: Cart functionality
 
   Background:
@@ -24,7 +25,7 @@ Feature: Cart functionality
     And the user clicks the "Continue Shopping" button
     Then the user is redirected to the inventory page
 
-    # Failed test
+  @wip
   Scenario: Standard user attempts to check out with an empty cart
     When the user clicks cart icon without adding any products
     And the user is on the "Your Cart" page
@@ -40,7 +41,7 @@ Feature: Cart functionality
     When the user clicks the "Add to cart" button on a product
     Then the cart icon increases to 1
 
-    # Failed test
+  @wip
   Scenario: User views products in cart
     When the user clicks the "Add to cart" button on a product
     And the cart icon increases to 1

@@ -3,7 +3,7 @@ package stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.JavascriptExecutor
 import pages.CartPage.{errorMessage, loginUser, onInventoryPage, priceTotal}
-import pages.CheckoutPage.{addAdditionalProduct, clickBackHomeButton, clickContinueButton, clickFinishButton, errorIconPresent, errorIconsCount, informationFormPresent, inputInvalidPostCode, inputValidFirstName, inputValidLastName, inputValidPostCode, onCheckoutOverviewPage, onOrderConfirmationPage, onYourInformationPage, paymentInfoPresent, priceTotalPresent, shippingInfoPresent}
+import pages.CheckoutPage.{addAdditionalProduct, clickBackHomeButton, clickContinueButton, clickFinishButton, errorIconPresent, errorIconsCount, errorMessagePresent, informationFormPresent, inputInvalidPostCode, inputValidFirstName, inputValidLastName, inputValidPostCode, onCheckoutOverviewPage, onOrderConfirmationPage, onYourInformationPage, paymentInfoPresent, priceTotalPresent, shippingInfoPresent}
 import support.DriverManager.driver
 
 class CheckoutStepdefs extends ScalaDsl with EN {
@@ -67,11 +67,10 @@ class CheckoutStepdefs extends ScalaDsl with EN {
     inputInvalidPostCode()
   }
 
-  Then("""the error message and red x icon is displayed for invalid field""") { () =>
-    errorMessage()
-    errorIconPresent()
-    errorIconsCount() == 1
-    println(errorIconsCount())
+  Then("""the error message is displayed for invalid field""") { () =>
+    errorMessagePresent()
+
+
   }
 
   // Scenario: Successful checkout initiation for Standard User

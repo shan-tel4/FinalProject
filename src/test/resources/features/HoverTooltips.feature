@@ -1,4 +1,4 @@
-@Accessibility @Tooltip @WIP
+@accessibility @tooltip @wip @regression
 Feature: Hover Tooltips for Accessibility
 
   Background:
@@ -21,7 +21,7 @@ Feature: Hover Tooltips for Accessibility
       | Menu Icon          | #react-burger-menu-btn           | Open Menu                           |
 
 
-  @RequiresItemInCart
+  @requiresItemInCart
   Scenario Outline: Tooltip appears and is accessible when hovering over cart related element "<elementName>"
     Given  The user has added a product to the cart
     When The user hovers over the element using selector "<cssSelector>"
@@ -33,7 +33,7 @@ Feature: Hover Tooltips for Accessibility
       | elementName   | cssSelector                 | tooltipText      |
       | Remove Button | #remove-sauce-labs-backpack | Remove From Cart |
 
-  @RequiresScroll
+  @requiresScroll
   Scenario Outline: Tooltip appears and is accessible when hovering over footer related element "<elementName>"
     Given  The user scrolls to the bottom of the page
     When The user hovers over the element using selector "<cssSelector>"

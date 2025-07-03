@@ -1,4 +1,4 @@
-@Footer @Regression
+@footer @regression
 Feature: Footer Links and Icons
 
   Background:
@@ -7,16 +7,16 @@ Feature: Footer Links and Icons
     And The user scrolls to the bottom of the page
 
   Scenario Outline: Click on "<icon>" icon in the footer
-    When the user clicks on the "<icon>" icon using the selector "<cssSelector>"
+    When the user clicks on the "<icon>" icon in the footer
     Then the company "<icon>" page opens in a new tab with "<expectedUrl>" url
 
     Examples:
-      | icon     |  | cssSelector            | expectedUrl                                  |
-      | Facebook |  | li.social_facebook > a | https://www.facebook.com/saucelabs           |
-      | Twitter  |  | li.social_twitter > a  | https://x.com/saucelabs                      |
-      | LinkedIn |  | li.social_linkedin > a | https://www.linkedin.com/company/sauce-labs/ |
+      | icon     | expectedUrl                                  |
+      | Facebook | https://www.facebook.com/saucelabs           |
+      | Twitter  | https://x.com/saucelabs                      |
+      | LinkedIn | https://www.linkedin.com/company/sauce-labs/ |
 
-  @WIP
+  @wip
   Scenario Outline: Verify the "<linkText>" link is visible in the footer
     Then The "<linkText>" link is visible in the footer
 

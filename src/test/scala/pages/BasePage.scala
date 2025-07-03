@@ -5,6 +5,7 @@ import pages.CartPage.driver
 import support.DriverManager
 import testdata.Data.{passwordText, usernameText}
 import utils.ConfigReader
+import utils.WaitUtils.setImplicitWait
 
 trait BasePage {
   def driver: WebDriver = DriverManager.driver

@@ -1,3 +1,4 @@
+@sorting @smoke @regression
 Feature: Product Sorting
 
   Background:

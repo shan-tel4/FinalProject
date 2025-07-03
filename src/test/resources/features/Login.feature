@@ -1,4 +1,4 @@
-@login
+@loginLogout @smoke @regression
 
 
 Feature: Login Functionality

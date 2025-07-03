@@ -1,3 +1,4 @@
+@loginLogout @regression
 Feature: Logout Functionality
 
   Background:

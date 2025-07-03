@@ -1,6 +1,6 @@
 package pages
 
-import locators.FooterLocators.rightsReservedLocator
+import locators.FooterLocators.{iconSelectors, rightsReservedLocator}
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 
@@ -10,9 +10,9 @@ import scala.jdk.CollectionConverters.SetHasAsScala
 
 object FooterPage extends BasePage {
 
-  def clickOnIcon(cssSelector: String): Unit = {
-
-    driver.findElement(By.cssSelector(cssSelector)).click()
+  def clickOnIconByName(icon: String): Unit = {
+val selector = iconSelectors.getOrElse(icon,throw new NoSuchElementException(s"No selector defined for icon: $icon"))
+    driver.findElement(By.cssSelector(selector)).click()
 
   }
 

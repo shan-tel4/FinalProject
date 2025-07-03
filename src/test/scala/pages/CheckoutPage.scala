@@ -1,8 +1,11 @@
 package pages
 
+import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.openqa.selenium.{By, JavascriptExecutor, WebElement}
 import pages.CartPage.{cartIconNumber, cartQuantity, driver}
 import testdata.Data.{firstName, invalidPostCode, lastName, postCode}
+
+import java.time.Duration
 
 
 object CheckoutPage extends BasePage {
@@ -109,6 +112,12 @@ object CheckoutPage extends BasePage {
   def informationFormPresent(): Unit = {
     driver.findElement(By.className("checkout_info")).isDisplayed
     println("Form is visible")
+  }
+  def errorMessagePresent(): Unit = {
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(5))
+    val error = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.error-message-container.error > h3"))))
+    assert(error.isDisplayed, "Expected error message to be visible but it was not.")
+    println("Error message is displayed: " + error.getText)
   }
 
 

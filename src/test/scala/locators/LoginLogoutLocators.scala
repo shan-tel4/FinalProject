@@ -10,5 +10,5 @@ object LoginLogoutLocators {
 val errorMessage: String = "div.error-message-container.error > h3"
   val menuIcon: String = "react-burger-menu-btn"
   val logoutLinkField: String = "logout_sidebar_link"
-  val loginLogo: String = "div.login_logo"
+  val loginLogo: String = "#login-button"
 }

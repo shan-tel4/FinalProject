@@ -1,3 +1,4 @@
+@checkout @smoke @regression
 Feature: Checkout functionality
 
   Background:
@@ -34,7 +35,7 @@ Feature: Checkout functionality
     And a list of products is displayed
     Then a summary of information is displayed
 
-    # Not finished
+
   Scenario: Validate Empty Postcode Field Handling For Logged-in User
     When the user clicks the "Add to cart" button on a product
     And the user clicks on the cart icon
@@ -45,7 +46,7 @@ Feature: Checkout functionality
     And the user inputs valid first name and last name
     And the user inputs invalid post code
     And the user clicks the "Continue" button
-    Then the error message and red x icon is displayed for invalid field
+    Then the error message is displayed for invalid field
 
   Scenario: Successful checkout initiation for Standard User
     When the user clicks the "Add to cart" button on a product

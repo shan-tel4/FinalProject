@@ -23,8 +23,9 @@ object ProductPage extends BasePage {
   }
 
   def confirmLogout(): Unit = {
-
-    assert(findByCssSelector(loginLogo).isDisplayed, "Expected to be back on the login page after logout.")
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(5))
+    val loginLogoField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(loginLogo)))
+    assert(loginLogoField.isDisplayed, "Expected to be back on the login page after logout.")
   }
 
   def selectSortOption(option: String): Unit = {
